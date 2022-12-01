@@ -3,6 +3,13 @@
     <form style="margin-bottom: 15px">
       <div class="columns is-vcentered">
         <h3 class="column is-size-4">Users</h3>
+        <b-button
+          v-if="selectedUsers.length"
+          class="is-primary"
+          style="margin-right: 10px;"
+        >
+          Change Status
+        </b-button>
         <a @click="$refs.filterUsers.show()" class="button is-primary">
           Filter
         </a>
@@ -29,7 +36,7 @@
       <tbody>
         <tr v-for="(user, i) in users.data" :key="i">
           <td>
-            <b-checkbox />
+            <b-checkbox v-model="selectedUsers" :native-value="user.id" />
           </td>
           <td>{{ user.gender }}</td>
           <td>{{ user.age }}</td>
@@ -60,9 +67,6 @@
 
               <b-dropdown-item aria-role="listitem">
                 Change status
-              </b-dropdown-item>
-              <b-dropdown-item aria-role="listitem">
-                Delete user
               </b-dropdown-item>
             </b-dropdown>
           </td>
@@ -105,6 +109,7 @@ export default {
   data() {
     return {
       downloading: false,
+      selectedUsers: [],
       users: {
         data: [],
         meta: {

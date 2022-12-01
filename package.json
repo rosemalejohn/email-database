@@ -1,7 +1,7 @@
 {
-  "name": "cost-application",
+  "name": "email-database",
   "version": "1.0.0",
-  "description": "Cost application",
+  "description": "Email Database",
   "author": "CreativeX",
   "private": true,
   "scripts": {

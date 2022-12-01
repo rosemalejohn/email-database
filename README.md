@@ -1,6 +1,6 @@
-# Cost Application
+# Email Database
 
-> Cost Application Dashboard
+> Email Database Dashboard
 
 ## Build Setup
 

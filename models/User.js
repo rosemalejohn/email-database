@@ -9,7 +9,7 @@ export default class User extends Model {
   }
 
   get isPayingMember() {
-    return this.transaction_cycle > 0 ? 'Yes' : 'No'
+    return this.is_paying ? 'Yes' : 'No'
   }
 
   get createdAt() {

@@ -97,7 +97,9 @@
           <td>{{ user.looking_for }}</td>
           <td>{{ user.activeAt }}</td>
           <td>{{ user.isPayingMember }}</td>
-          <td>{{ user.amount }}</td>
+          <td>
+            <span v-if="user.site">{{ user.site.name }}</span>
+          </td>
           <td>
             <span v-if="user.country">{{ user.country.name }}</span>
           </td>

@@ -1,0 +1,38 @@
+.tabs {
+  a {
+    border-bottom: 3px solid transparent;
+    padding: 0;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    &:hover {
+      border-bottom-color: #a1a1a1;
+      color: #a1a1a1;
+    }
+  }
+  ul {
+    border-bottom: 3px solid transparent;
+    li {
+      a {
+        color: #a1a1a1;
+      }
+
+      &.is-active {
+        a {
+          color: $black;
+          border-bottom: 3px solid $primary;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .tabs ul {
+    flex-direction: column;
+
+    li {
+      width: 100%;
+    }
+  }
+}

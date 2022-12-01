@@ -1,0 +1,46 @@
+.footer {
+  background-color: $black;
+  color: $white;
+  padding-top: 55px;
+  padding-bottom: 30px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .footer-list {
+    li {
+      a {
+        line-height: 36px;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  hr {
+    background-color: $black-light;
+    margin: 47px 0;
+    height: 1px;
+    @media (min-width: 320px) and (max-width: 768px) {
+      margin: 20px 0;
+    }
+  }
+
+  .footer-logo {
+    @media (min-width: 320px) and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .footer-bottom {
+    li {
+      display: inline-block;
+      color: $footer-bottom-color;
+      padding-right: 28px;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+
+@import "vendors/bulma";
+@import "base/style";
+@import "mixins/margins";
+@import "component/nav";
+@import "component/buttons";
+@import "component/hero";
+@import "component/card";
+@import "component/tabs";
+@import "component/tags";
+@import "component/form";
+@import "component/chat";
+@import "component/footer";
+@import "pages/home";
+@import "pages/login";
+@import "pages/register";
+@import "pages/howtopay";
+@import "pages/prices";
+@import "pages/dashboard";
+@import "pages/chat";
+
+.upload-button {
+    cursor: pointer;
+}
+

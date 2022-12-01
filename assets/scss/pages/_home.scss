@@ -1,0 +1,56 @@
+.hero-h {
+  background: linear-gradient(to right, $primary 0%, rgb(254, 223, 79) 100%);
+  background: url('~assets/img/banner.png');
+  background-size: cover;
+  @media (min-width: 320px) and (max-width: 767px) {
+    background: url('~assets/img/banner-mobile.png') 50%;
+    background-size: cover;
+    min-height: 414px !important;
+  }
+}
+
+.hero-body-h {
+  @media (min-width: 320px) and (max-width: 768px) {
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .card {
+    @media (min-width: 320px) and (max-width: 768px) {
+      position: absolute;
+      top: 10.5em;
+      z-index: 1;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.section-h {
+  @media (min-width: 320px) and (max-width: 374px) {
+    position: relative;
+    top: 35em;
+  }
+
+  @media (min-width: 375px) and (max-width: 424px) {
+    top: 33em;
+  }
+
+  @media (min-width: 425px) and (max-width: 767px) {
+    top: 31em;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    top: 22em;
+  }
+}
+
+.footer-h {
+  @media (min-width: 320px) and (max-width: 768px) {
+    position: relative;
+    top: 29em;
+  }
+}

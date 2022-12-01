@@ -1,0 +1,18 @@
+.hero {
+  @media (min-width: 320px) and (max-width: 768px) {
+    margin-top: 0;
+  }
+  &.is-grey {
+    background-color: $body-grey;
+  }
+
+  .hero-body {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @media (min-width: 320px) and (max-width: 768px) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}

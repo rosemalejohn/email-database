@@ -1,0 +1,71 @@
+.hero-r {
+  .hero-body {
+    @media (min-width: 320px) and (max-width: 768px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.card-r {
+  p {
+    line-height: 32px;
+    color: $black;
+  }
+}
+
+.field-dob {
+  .label {
+    margin-bottom: 0.5em;
+  }
+
+  .select {
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
+
+  .field-body {
+    .field {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.file-r {
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  &.is-boxed {
+    .file-cta {
+      background-color: $white;
+      padding-top: 35px;
+      padding-bottom: 35px;
+    }
+    .file-icon {
+      width: 90px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.form-footer-r {
+  padding: 35px;
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.reg-avatar {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  border: 1px solid $grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}

@@ -1,0 +1,35 @@
+.tag {
+  &.is-primary {
+    background-color: $primary !important;
+  }
+
+  &.is-success {
+    background-color: $green !important;
+  }
+}
+
+.notification {
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  .notif-icon {
+    line-height: 0;
+    i {
+      font-size: 30px;
+    }
+  }
+
+  p {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &.is-danger {
+    background-color: $danger !important;
+  }
+
+  &.is-transparent {
+    background-color: transparent !important;
+    border: 1px solid #a3a3a3;
+  }
+}

@@ -1,0 +1,14 @@
+.chat-entries {
+  .ce-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.button {
+  &.is-cb {
+    padding: 0;
+    padding-right: 8px;
+  }
+}

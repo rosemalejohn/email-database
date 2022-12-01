@@ -1,0 +1,13 @@
+.l-card-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    color: $black;
+  }
+
+  a {
+    color: $primary;
+  }
+}

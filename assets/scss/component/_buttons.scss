@@ -1,0 +1,22 @@
+.button {
+  font-weight: normal;
+  transition: box-shadow 0.3s;
+  height: auto;
+  padding: calc(10px - 1px) 0.75em;
+  font-family: 'Lexend Deca', sans-serif;
+
+  &.is-primary {
+    background: $primary;
+    color: $black;
+    background: linear-gradient(to right, $primary 0%, rgb(254, 223, 79) 100%);
+
+    &:hover {
+      color: $black;
+    }
+  }
+}
+
+.button:focus:not(:active),
+.button.is-focused:not(:active) {
+  box-shadow: none;
+}

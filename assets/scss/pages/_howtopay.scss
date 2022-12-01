@@ -1,0 +1,35 @@
+.payment-list {
+  ol {
+    display: block;
+    padding: 0 0 0 40px;
+    list-style: none;
+    overflow: hidden;
+    counter-reset: numList;
+
+    li {
+      width: 100%;
+      float: left;
+      position: relative;
+
+      &:before {
+        counter-increment: numList;
+        content: counter(numList);
+        float: left;
+        position: absolute;
+        left: -40px;
+        top: 5px;
+        font: bold 12px sans-serif;
+        text-align: center;
+        line-height: 24px;
+        color: $grey;
+        width: 24px;
+        height: 24px;
+        background: transparent;
+        border: 1px solid $grey;
+
+        -moz-border-radius: 999px;
+        border-radius: 999px;
+      }
+    }
+  }
+}

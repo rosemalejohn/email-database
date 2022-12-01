@@ -1,0 +1,16 @@
+.container-p {
+  max-width: 100%;
+
+  @media (min-width: 1281px) {
+    max-width: 551px;
+  }
+}
+
+.check-list {
+  ul {
+    li {
+      background: url('~assets/img/checkmark.png') no-repeat 0 50%;
+      padding-left: 30px;
+    }
+  }
+}

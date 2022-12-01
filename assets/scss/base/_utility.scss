@@ -1,0 +1,86 @@
+// Text colors
+.has-text-primary {
+  color: $primary !important;
+}
+
+.has-text-grey {
+  color: $grey !important;
+}
+
+// Background colors
+.has-bg-transparent {
+  background-color: transparent;
+}
+
+.has-bg-primary {
+  background-color: $primary;
+}
+
+.has-bg-success {
+  background-color: $green !important;
+}
+
+// Text size
+.has-text-size-xl {
+  font-size: 28px !important;
+}
+
+.has-text-size-lg {
+  font-size: 24px !important;
+}
+
+.has-text-size-md {
+  font-size: 20px !important;
+}
+
+.has-text-size-sm {
+  font-size: 18px !important;
+}
+
+.has-text-size-default {
+  font-size: 14px !important;
+}
+
+// Flex utilities
+.is-justified-centered {
+  justify-content: center !important;
+}
+
+.is-justified-spacearound {
+  justify-content: space-around !important;
+}
+
+.is-justified-between {
+  justify-content: space-between !important;
+}
+
+// Line heights
+.has-lh-normal {
+  line-height: normal;
+}
+
+.m-0-auto {
+  margin: 0 auto;
+}
+
+.br-10 {
+  border-radius: 10px;
+}
+
+.bb-10 {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.bt-10 {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.is-clickable {
+  cursor: pointer;
+}

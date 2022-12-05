@@ -4,11 +4,12 @@
       <div class="columns is-vcentered">
         <h3 class="column is-size-4">Users</h3>
         <b-button
+          @click="updateStatus"
           v-if="selectedUsers.length"
           class="is-primary"
           style="margin-right: 10px;"
         >
-          Change Status
+          Mark as Used
         </b-button>
         <a @click="$refs.filterUsers.show()" class="button is-primary">
           Filter
@@ -19,7 +20,9 @@
     <table class="table is-fullwidth is-striped">
       <thead>
         <tr>
-          <th></th>
+          <th>
+            <b-checkbox v-model="selectAll" />
+          </th>
           <th>Gender</th>
           <th>Age</th>
           <th>Email</th>
@@ -65,8 +68,11 @@
                 />
               </template>
 
-              <b-dropdown-item aria-role="listitem">
-                Change status
+              <b-dropdown-item
+                @click="changeUserStatus(user)"
+                aria-role="listitem"
+              >
+                Mark as Used
               </b-dropdown-item>
             </b-dropdown>
           </td>
@@ -93,6 +99,7 @@
 </template>
 
 <script>
+import { map } from 'lodash'
 import User from '@/models/User'
 import FilterUsers from '@/components/dialogs/FilterUsers'
 
@@ -109,6 +116,7 @@ export default {
   data() {
     return {
       downloading: false,
+      selectAll: false,
       selectedUsers: [],
       users: {
         data: [],
@@ -143,6 +151,16 @@ export default {
     }
   },
 
+  watch: {
+    selectAll(val) {
+      if (val) {
+        this.selectedUsers = map(this.users.data, 'id')
+      } else {
+        this.selectedUsers = []
+      }
+    }
+  },
+
   created() {
     this.getUsers()
   },
@@ -165,27 +183,30 @@ export default {
         })
         .get()
     },
-    deleteUser(user) {
-      this.$buefy.dialog.confirm({
-        message: 'Are you sure to delete this user?',
-        onConfirm: () => {}
-      })
-    },
-    manageCost(cost, status) {
-      this.$axios.post(`/cost/costs/${cost.id}/manage`, { status }).then(() => {
-        cost.status = status
-        this.$buefy.toast.open({
-          message: 'Success!',
-          type: 'is-success'
-        })
-      })
-    },
     onPageChange(page) {
       this.users.meta.current_page = page
       this.getUsers()
     },
     exportFilter() {
       window.location.replace(this.exportUrl)
+    },
+    changeUserStatus(user) {
+      this.selectedUsers = [user.id]
+      this.updateStatus()
+    },
+    updateStatus() {
+      this.$buefy.dialog.confirm({
+        message: 'Are you sure to change status?',
+        onConfirm: async () => {
+          try {
+            await this.$axios.post('/email/users/update-status', {
+              user_ids: this.selectedUsers,
+              status: 'used'
+            })
+            this.getUsers()
+          } catch {}
+        }
+      })
     }
   }
 }

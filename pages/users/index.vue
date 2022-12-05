@@ -41,7 +41,7 @@
           <td>{{ user.gender }}</td>
           <td>{{ user.age }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.looking_for }}</td>
+          <td>{{ user.preferences }}</td>
           <td>{{ user.activeAt }}</td>
           <td>{{ user.isPayingMember }}</td>
           <td>
@@ -51,7 +51,7 @@
             <span v-if="user.country">{{ user.country.name }}</span>
           </td>
           <td>
-            <!-- <b-tag :type="cost.statusColor">{{ cost.statusText }}</b-tag> -->
+            <b-tag :type="user.statusColor">{{ user.statusText }}</b-tag>
           </td>
           <td>{{ user.createdAt }}</td>
           <td>
@@ -156,6 +156,7 @@ export default {
         .where('paying', this.filters.paying)
         .where('date_joined', this.filters.date_joined)
         .where('site_id', this.filters.site_id)
+        .where('status', this.filters.status)
         .where('ages', this.ageFilter)
         .orderBy('-created_at')
         .params({

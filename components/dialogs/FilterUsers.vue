@@ -49,8 +49,8 @@
       <b-field label="Status">
         <b-select v-model="filters.status" placeholder="Filter Status" expanded>
           <option value="">All Status</option>
-          <option :value="1">New</option>
-          <option :value="2">Used</option>
+          <option value="new">New</option>
+          <option value="used">Used</option>
         </b-select>
       </b-field>
 

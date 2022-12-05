@@ -31,4 +31,18 @@ export default class User extends Model {
       return null
     }
   }
+
+  get statusColor() {
+    if (this.user_email_status_count) {
+      return 'is-danger'
+    }
+    return 'is-success'
+  }
+
+  get statusText() {
+    if (this.user_email_status_count) {
+      return 'Used'
+    }
+    return 'New'
+  }
 }

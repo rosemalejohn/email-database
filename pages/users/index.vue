@@ -5,7 +5,7 @@
         <h3 class="column is-size-4">Users</h3>
         <b-button
           @click="updateStatus"
-          v-if="selectedUsers.length"
+          v-if="filters.user_ids.length"
           class="is-primary"
           style="margin-right: 10px;"
         >
@@ -39,7 +39,7 @@
       <tbody>
         <tr v-for="(user, i) in users.data" :key="i">
           <td>
-            <b-checkbox v-model="selectedUsers" :native-value="user.id" />
+            <b-checkbox v-model="filters.user_ids" :native-value="user.id" />
           </td>
           <td>{{ user.gender }}</td>
           <td>{{ user.age }}</td>
@@ -121,7 +121,6 @@ export default {
     return {
       downloading: false,
       selectAll: false,
-      selectedUsers: [],
       users: {
         data: [],
         meta: {
@@ -129,6 +128,7 @@ export default {
         }
       },
       filters: {
+        user_ids: [],
         gender: '',
         activated: '',
         looking_for: '',
@@ -158,9 +158,9 @@ export default {
   watch: {
     selectAll(val) {
       if (val) {
-        this.selectedUsers = map(this.users.data, 'id')
+        this.filters.user_ids = map(this.users.data, 'id')
       } else {
-        this.selectedUsers = []
+        this.filters.user_ids = []
       }
     }
   },
@@ -180,6 +180,7 @@ export default {
         .where('site_id', this.filters.site_id)
         .where('status', this.filters.status)
         .where('ages', this.ageFilter)
+        .where('user_ids', this.filters.user_ids.join())
         .orderBy('-created_at')
         .params({
           limit: 100,
@@ -200,7 +201,7 @@ export default {
       )
     },
     changeUserStatus(user) {
-      this.selectedUsers = [user.id]
+      this.filters.user_ids = [user.id]
       this.updateStatus()
     },
     updateStatus() {
@@ -209,7 +210,7 @@ export default {
         onConfirm: async () => {
           try {
             await this.$axios.post('/email/users/update-status', {
-              user_ids: this.selectedUsers,
+              user_ids: this.filters.user_ids,
               status: 'used'
             })
             this.getUsers()

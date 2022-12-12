@@ -44,7 +44,9 @@
           <td>{{ user.gender }}</td>
           <td>{{ user.age }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.preferences }}</td>
+          <td>
+            <UserPreference :preference="user.preferences" />
+          </td>
           <td>{{ user.activeAt }}</td>
           <td>{{ user.isPayingMember }}</td>
           <td>
@@ -102,6 +104,7 @@
 import { map } from 'lodash'
 import User from '@/models/User'
 import FilterUsers from '@/components/dialogs/FilterUsers'
+import UserPreference from '@/components/UserPreference'
 
 export default {
   head: {
@@ -110,7 +113,8 @@ export default {
   layout: 'admin',
   middleware: 'auth',
   components: {
-    FilterUsers
+    FilterUsers,
+    UserPreference
   },
 
   data() {
@@ -166,8 +170,8 @@ export default {
   },
 
   methods: {
-    async getUsers() {
-      this.users = await User.include('country')
+    getUserApi() {
+      return User.include('country')
         .where('gender', this.filters.gender)
         .where('activated', this.filters.activated)
         .where('looking_for', this.filters.looking_for)
@@ -181,14 +185,19 @@ export default {
           limit: 100,
           page: this.users.meta.current_page
         })
-        .get()
+    },
+    async getUsers() {
+      this.users = await this.getUserApi().get()
     },
     onPageChange(page) {
       this.users.meta.current_page = page
       this.getUsers()
     },
     exportFilter() {
-      window.location.replace(this.exportUrl)
+      const url = this.getUserApi()._builder.query()
+      window.location.replace(
+        `${this.$axios.defaults.baseURL}/email/users/export${url}`
+      )
     },
     changeUserStatus(user) {
       this.selectedUsers = [user.id]
